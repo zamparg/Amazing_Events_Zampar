@@ -10,6 +10,7 @@ body{
 }
 
 /* HEADER*/
+
 /* Navbar*/
 .logo{
     width: 60px;
@@ -31,9 +32,12 @@ body{
 .nav-link{
     padding: 0.25rem;
 }
+.navbar-toggler-icon {
+    color: #e0046c;
+}
 /* title*/
 .title-container1{
-    background: #e0046c;
+    background: #4409538f;
     height: 10vh;
     text-transform: uppercase;
 }
@@ -97,6 +101,28 @@ input, textarea{
     padding: 0.25rem;
 }
 
+/*STATS*/
+table{
+    border: white;
+}
+.table-title{
+    color: white;
+    background-color: #4409538f;
+    font-weight: bold;
+}
+.table-subtitle-container{
+    color: white;
+    background-color: #e0046b70;
+}
+
+.table-subtitle{
+    font-weight: 500; 
+}
+
+/*Cards*/
+.card-title{
+    text-transform: uppercase;
+}
 /*Media Query*/
 @media (max-width: 992px) {
     .categories-list{
