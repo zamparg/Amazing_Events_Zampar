@@ -55,9 +55,7 @@ h1{
 .categories-list ul{
     flex-wrap: wrap;
 }
-.search-input, .search-btn{
-    height: 2rem;
-}
+
 .search-input{
     flex-shrink: 1;
 }
