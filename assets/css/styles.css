@@ -15,13 +15,13 @@ body{
 .logo{
     width: 60px;
 }
-.btn{
+.btn, .btn-outline-success, .btn:active, .btn:target{
     background-color: white;
     color: #e0046c;
     border: #e0046c solid;
     text-transform: uppercase;
 }
-.btn.active, .navbar-nav .nav-link.active{
+.btn.active, .navbar-nav .nav-link.active {
     background-color: #e0046c;
     color: white;
     border: white double;
@@ -122,6 +122,10 @@ table{
 /*Cards*/
 .card-title{
     text-transform: uppercase;
+}
+.detail-img{
+    height: 175px;
+    object-fit: cover;
 }
 /*Media Query*/
 @media (max-width: 992px) {
