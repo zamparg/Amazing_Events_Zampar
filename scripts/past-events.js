@@ -11,7 +11,7 @@ for (i =0; i< dataPast.length; i++ ){
                     </div>
                     <div class="card-footer d-flex justify-content-around align-items-center">
                         <small> $ ${dataPast[i].price} </small>
-                        <a href="./pages/details.html" class="btn btn-outline-success search-btn p-0">
+                        <a href="./details.html" class="btn btn-outline-success search-btn p-0">
                             View more
                         </a>
                     </div>

@@ -7,27 +7,36 @@ body{
     background-image: url(../img/background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 100vh;
+
 }
 
 /* HEADER*/
+nav, header{
+    background-color: #30073a8f;
+}
+
+/*MAIN*/ 
 
 /* Navbar*/
 .logo{
     width: 60px;
 }
 .btn, .btn-outline-success, .btn:active, .btn:target{
-    background-color: white;
-    color: #e0046c;
+    background-color: #e0046b70;
+    color: white;
     border: #e0046c solid;
     text-transform: uppercase;
 }
 .btn.active, .navbar-nav .nav-link.active {
-    background-color: #e0046c;
+    background-color: #30073a8f;
     color: white;
     border: white double;
+    
 }
 .btn:hover{
-    color:#e0046c
+    background-color: #4409538f;
+    color:white;
 }
 .nav-link{
     padding: 0.25rem;
@@ -97,6 +106,9 @@ footer{
 input, textarea{
     border-radius: 0.5rem;
     padding: 0.25rem;
+}
+#message{
+    height: 8rem;
 }
 
 /*STATS*/

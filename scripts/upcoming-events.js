@@ -11,7 +11,7 @@ for (i =0; i< dataUpcoming.length; i++ ) {
                     </div>
                     <div class="card-footer d-flex justify-content-around align-items-center">
                         <small> $ ${dataUpcoming[i].price} </small>
-                        <a href="./pages/details.html" class="btn btn-outline-success search-btn p-0">
+                        <a href="./details.html" class="btn btn-outline-success search-btn p-0">
                             View more
                         </a>
                     </div>
