@@ -15,6 +15,9 @@ body{
 nav, header{
     background-color: #30073a8f;
 }
+.navbar-toggler-icon{
+    color: white;
+}
 
 /*MAIN*/ 
 

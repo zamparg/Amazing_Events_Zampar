@@ -1,4 +1,5 @@
-let dataUpcoming = data.events.filter(event => event.date >= data.currentDate)
+// let dataUpcoming = data.events.filter(event => event.date >= data.currentDate)
+let dataUpcoming = filterMayor(data.events, data.currentDate)
 
 for (i =0; i< dataUpcoming.length; i++ ) {
     document.getElementById("cardsUpcoming").innerHTML+=`
