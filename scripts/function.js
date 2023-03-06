@@ -20,7 +20,7 @@ function filterMayor(data, dateRef){
 }
 
 function printCard(id, array){
-    for (i =0; i< dataPast.length; i++ ){
+    for (i =0; i< array.length; i++ ){
     document.getElementById(id).innerHTML+=`
     <div class="col">
                 <div class="card h-100">

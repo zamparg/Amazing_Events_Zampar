@@ -1,1 +1,2 @@
-printCard("cardsIndex", data)
+console.log(data.events)
+printCard("cardsIndex", data.events)
