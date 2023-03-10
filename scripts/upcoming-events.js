@@ -1,5 +1,11 @@
-// let dataUpcoming = data.events.filter(event => event.date >= data.currentDate)
-let dataUpcoming = filterMayor(data.events, data.currentDate)
+let dataUpcoming = data.events.filter(event => event.date >= data.currentDate)
+let categoriesUpcoming = eliminarDuplicados(dataUpcoming.map((event) => event.category)).sort();
+
+categoriesUpcoming.forEach(category =>{
+    printCategories('categoriesUpcoming', category)
+})
 
 
-printCard("cardsUpcoming", dataUpcoming)
+dataUpcoming.forEach(evento => {
+    printCard("cardsUpcoming", evento)
+})

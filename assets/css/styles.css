@@ -8,6 +8,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
+    background-attachment: fixed;
+
 
 }
 
@@ -15,8 +17,16 @@ body{
 nav, header{
     background-color: #30073a8f;
 }
-.navbar-toggler-icon{
+.navbar-toggler{
     color: white;
+    border: none;
+}
+.navbar-toggler:active{
+    color: white;
+    border: none;
+}
+.navbar-toggler-icon{
+    color: white ;
 }
 
 /*MAIN*/ 
@@ -44,9 +54,7 @@ nav, header{
 .nav-link{
     padding: 0.25rem;
 }
-.navbar-toggler-icon {
-    color: #e0046c;
-}
+
 /* title*/
 .title-container1{
     background: #4409538f;
@@ -71,7 +79,7 @@ h1{
 .search-input{
     flex-shrink: 1;
 }
-.search-btn{
+.details-btn{
     background-color: #e0046c;
     color: white;
 }
@@ -79,6 +87,10 @@ h1{
     background-color: white;
     color: #e0046c;
     border-color: #e0046c;
+}
+
+.search-button, .search-input{
+    height: 3rem;
 }
 .main-events{
     flex-direction: column;
@@ -141,40 +153,45 @@ table{
     object-fit: cover;
 }
 /*Media Query*/
-@media (max-width: 992px) {
+@media (max-width: 991px) {
+    
     .categories-list{
         flex-direction: column;
         flex-wrap: nowrap;
     }
     .categories-list ul{
         flex-direction: column;
-        flex-wrap: nowrap;
         align-items: flex-start !important;
         margin-left: 1rem;
+        margin-top: 0.5rem;
+    }
+    .categoryItem{
+        min-width: 146px;
     }
     .aside-categories{
         padding: 0;
         margin: 0;
-        width: 1200px;
+        
     }
     .main-events{
         flex-direction: row;
-    }
-}
-@media (max-width: 600px) {
-    .aside-categories{
-        width: 100vw;
-    }
-    .categories-list ul{
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start !important;
-        margin: 0.5rem;
     }
     .search-box{
         flex-direction: column;
         margin: 0.5rem;
     }
+}
+@media (max-width: 600px) {
+
+    .categories-list ul{
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0.5rem;
+        gap: 2rem;
+    }
+
     .main-events{
         flex-direction: column;
     }
