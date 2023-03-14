@@ -1,7 +1,7 @@
-function printCard(data, id){
-    document.getElementById(id).innerHTML=``
+function printCard(data, DomElement){
+    DomElement.innerHTML=``
     data.forEach((evento)=>{
-    document.getElementById(id).innerHTML+=`
+    DomElement.innerHTML+=`
     <div class="col">
                 <div class="card h-100">
                     <img src="${evento.image}" class="card-img-top p-2" alt="...">
@@ -10,14 +10,13 @@ function printCard(data, id){
                         <p class="card-text">${evento.description}</p>
                     </div>
                     <div class="card-footer d-flex justify-content-around align-items-center">
-                        <small> $ ${evento.price} </small>
-                        <a href="./details.html" class="btn btn-outline-success details-btn p-0">
+                        <small> US$ ${evento.price} </small>
+                        <a href="./details.html?id=${evento._id}" class="btn details-btn p-1">
                             View more
                         </a>
                     </div>
                 </div>
             </div>
-    
     `;
 })
 };
@@ -44,6 +43,8 @@ function eliminarDuplicados(array){
 };
 
 function checkboxfilter(e, array, control){
+    if (array==control) {array=[]};
+    
     if (e.target.checked){
         array.push(e.target.value)
     }else {
@@ -53,6 +54,10 @@ function checkboxfilter(e, array, control){
     return array
 }
 
-function eventFilter(data, arrayCategoriesFilter){
+function filterByCategory(data, arrayCategoriesFilter){
     return data.filter((event)=> arrayCategoriesFilter.indexOf(event.category)!= -1)
+}
+
+function filterBySearch(array, value){
+    return array.filter((event) => event.name.toLowerCase().includes(value))
 }

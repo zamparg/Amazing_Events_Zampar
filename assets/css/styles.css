@@ -35,17 +35,17 @@ nav, header{
 .logo{
     width: 60px;
 }
-.btn, .btn-outline-success, .btn:active, .btn:target{
+.btn, .btn:active, .btn:target, .nav-link:focus, .nav-link:active, .nav-link{
     background-color: #e0046b70;
-    color: white;
+    color: white !important;
     border: #e0046c solid;
     text-transform: uppercase;
 }
-.btn.active, .navbar-nav .nav-link.active {
+
+.btn.active {
     background-color: #30073a8f;
     color: white;
     border: white double;
-    
 }
 .btn:hover{
     background-color: #4409538f;
@@ -53,6 +53,25 @@ nav, header{
 }
 .nav-link{
     padding: 0.25rem;
+}
+.details-btn{
+    background-color: #e0046c;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+}
+
+.details-btn:hover, .details-btn:active {
+    background-color: #e0046b70;
+    border: none;
+}
+
+.form-check-input:checked {
+    background-color: #e0046b70;
+    border-color: #e0046c;
+    }
+.form-check-input:focus{
+    box-shadow:#4409538f;
 }
 
 /* title*/
@@ -79,10 +98,7 @@ h1{
 .search-input{
     flex-shrink: 1;
 }
-.details-btn{
-    background-color: #e0046c;
-    color: white;
-}
+
 .search-btn:hover{
     background-color: white;
     color: #e0046c;
@@ -90,7 +106,7 @@ h1{
 }
 
 .search-button, .search-input{
-    height: 3rem;
+    height: 2.3rem;
 }
 .main-events{
     flex-direction: column;
@@ -145,11 +161,16 @@ table{
 }
 
 /*Cards*/
+.h-100{
+    min-height: 333px;
+}
+
 .card-title{
     text-transform: uppercase;
 }
 .detail-img{
-    height: 175px;
+    width:100%;
+    height: 100%;
     object-fit: cover;
 }
 /*Media Query*/
@@ -183,6 +204,7 @@ table{
 }
 @media (max-width: 600px) {
 
+
     .categories-list ul{
         flex-direction: row;
         flex-wrap: wrap;
@@ -197,4 +219,19 @@ table{
     }
     }
     
-    
+@media (max-width: 390px) {
+        .tableOverflow{
+            overflow-x: auto;
+        }
+        .tableOverflow::-webkit-scrollbar {
+            height: 12px;
+          }
+        .tableOverflow::-webkit-scrollbar-track {
+            background: #4409538f;
+          }
+        .tableOverflow::-webkit-scrollbar-thumb {
+            background-color: #e0046b70;
+            border-radius: 20px;     
+            border: 2px solid #30073a8f;
+          }
+    }
