@@ -2,7 +2,7 @@ const dataIndex=data.events
 const categoriesNav = document.getElementById("categoriesIndex")
 const cardContainer = document.getElementById("cardsIndex")
 const FilterNavbar = document.forms[0]
-const categoriesIndex = eliminarDuplicados(data.events.map((event) => event.category)).sort();
+const categoriesIndex = deleteDuplicate(data.events.map((event) => event.category)).sort();
 let eventsFilterByCategory = dataIndex
 let eventsFilterBySearch = dataIndex
 let categoriesFilterIndex = []

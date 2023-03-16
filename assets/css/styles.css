@@ -14,8 +14,9 @@ body{
     background-size: cover;
     min-height: 100vh;
     background-attachment: fixed;
-
-
+}
+h2{
+    color:white
 }
 
 /* HEADER*/
@@ -75,8 +76,10 @@ nav, header{
     background-color: #e0046b70;
     border-color: #e0046c;
     }
-.form-check-input:focus{
-    box-shadow:#4409538f;
+.form-check-input:focus {
+    border-color: #e0046c;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #e0046b4b
 }
 
 /* title*/

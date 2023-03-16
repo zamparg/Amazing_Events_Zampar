@@ -2,7 +2,7 @@ const dataUpcoming = data.events.filter(event => event.date < data.currentDate)
 const categoriesNav = document.getElementById("categoriesUpcoming")
 const cardContainer = document.getElementById("cardsUpcoming")
 const FilterNavbar = document.forms[0]
-const categoriesUpcoming = eliminarDuplicados(dataUpcoming.map((event) => event.category)).sort();
+const categoriesUpcoming = deleteDuplicate(dataUpcoming.map((event) => event.category)).sort();
 let eventsFilterByCategory = dataUpcoming
 let eventsFilterBySearch = dataUpcoming
 let categoriesFilterIndex = []

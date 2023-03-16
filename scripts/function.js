@@ -1,4 +1,8 @@
 function printCard(data, DomElement){
+    if(data.length == 0){
+        DomElement.innerHTML=`<h2 class="text-center ">No Results</h2>`
+        return
+    }
     DomElement.innerHTML=``
     data.forEach((evento)=>{
     DomElement.innerHTML+=`
@@ -18,6 +22,7 @@ function printCard(data, DomElement){
                 </div>
             </div>
     `;
+
 })
 };
 
@@ -32,7 +37,7 @@ function printCategories(DomElement, data){
     })
 };
 
-function eliminarDuplicados(array){
+function deleteDuplicate(array){
     arrayCategories=[];
     array.forEach(element => {
         if(arrayCategories.indexOf(element)== -1){
@@ -55,7 +60,7 @@ function checkboxfilter(e, array, control){
 }
 
 function filterByCategory(data, arrayCategoriesFilter){
-    return data.filter((event)=> arrayCategoriesFilter.indexOf(event.category)!= -1)
+    return data.filter((event)=> arrayCategoriesFilter.includes(event.category))
 }
 
 function filterBySearch(array, value){
