@@ -1,16 +1,27 @@
-const dataUpcoming = data.events.filter(event => event.date < data.currentDate)
+let dataUpcoming 
+let categoriesUpcoming 
+let eventsFilterByCategory
+let eventsFilterBySearch
 const categoriesNav = document.getElementById("categoriesUpcoming")
 const cardContainer = document.getElementById("cardsUpcoming")
 const FilterNavbar = document.forms[0]
-const categoriesUpcoming = deleteDuplicate(dataUpcoming.map((event) => event.category)).sort();
-let eventsFilterByCategory = dataUpcoming
-let eventsFilterBySearch = dataUpcoming
 let categoriesFilterIndex = []
 let eventsFilter = []
 let searchValue=""
 
-printCategories(categoriesNav, categoriesUpcoming)
-printCard(dataUpcoming, cardContainer)
+async function start(){
+    let result = await fetchData(DataUrl)
+    dataUpcoming = result.events.filter(event => event.date >= data.currentDate)
+    categoriesUpcoming = deleteDuplicate(dataUpcoming.map((event) => event.category)).sort();
+    printCategories(categoriesNav, categoriesUpcoming)
+    printCard(dataUpcoming, cardContainer)
+    eventsFilterByCategory = dataUpcoming
+    eventsFilterBySearch = dataUpcoming
+}
+
+start()
+
+
 
 categoriesNav.addEventListener('change',(e)=>{
     categoriesFilterIndex = checkboxfilter(e , categoriesFilterIndex, categoriesUpcoming);

@@ -1,3 +1,23 @@
+const DataUrl = 'https://mindhub-xj03.onrender.com/api/amazing'
+
+async function fetchData(url){
+    let dataAsync = await fetch(url)
+        .then(response=>response.json())
+        .then(datos =>{
+            
+            return datos
+        })
+        .catch(err=>{
+            fetch('../assets/amazing.json')
+                .then(response=>response.json())
+                .then(datos =>{
+                    
+                    return datos})
+                .catch(err=>{alert('Intente más tarde')})
+    })
+    return dataAsync
+}
+
 function printCard(data, DomElement){
     if(data.length == 0){
         DomElement.innerHTML=`<h2 class="text-center ">No Results</h2>`

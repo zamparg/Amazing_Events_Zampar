@@ -1,16 +1,26 @@
-const dataIndex=data.events
+let dataIndex
+let categoriesIndex
+let eventsFilterByCategory
+let eventsFilterBySearch
 const categoriesNav = document.getElementById("categoriesIndex")
 const cardContainer = document.getElementById("cardsIndex")
 const FilterNavbar = document.forms[0]
-const categoriesIndex = deleteDuplicate(data.events.map((event) => event.category)).sort();
-let eventsFilterByCategory = dataIndex
-let eventsFilterBySearch = dataIndex
 let categoriesFilterIndex = []
 let eventsFilter = []
 let searchValue=""
 
-printCategories(categoriesNav, categoriesIndex)
-printCard(dataIndex, cardContainer)
+async function start(){
+    let result = await fetchData(DataUrl)
+    dataIndex = result.events
+    categoriesIndex = deleteDuplicate(dataIndex.map((event) => event.category)).sort();
+    printCategories(categoriesNav, categoriesIndex)
+    printCard(dataIndex, cardContainer)
+    eventsFilterByCategory = dataIndex
+    eventsFilterBySearch = dataIndex
+}
+
+start()
+
 
 categoriesNav.addEventListener('change',(e)=>{
     categoriesFilterIndex = checkboxfilter(e , categoriesFilterIndex, categoriesIndex);
