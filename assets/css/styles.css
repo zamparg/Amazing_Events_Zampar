@@ -210,9 +210,15 @@ table{
         margin: 0.5rem;
     }
 }
+
+.card-container{
+    min-height: 57vh;
+}
 @media (max-width: 600px) {
 
-
+    .card-container{
+        min-height: 20vh;
+    }
     .categories-list ul{
         flex-direction: row;
         flex-wrap: wrap;
@@ -243,3 +249,4 @@ table{
             border: 2px solid #30073a8f;
           }
     }
+
