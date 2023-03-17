@@ -49,24 +49,21 @@
             <h1 class="title">Stats</h1>
         </div>
     </header>
-    <main class="d-flex container-fluid tableOverflow">
-        
-        <table class="table m-3 table-bordered  ">
+    <main class="col flex-wrap container-fluid p-3 ">
+    
+        <table class="table table-bordered  col">
             <thead class="text-center">
                 <tr class="table-title">
                     <th colspan="3">Events statistics</th>
                 </tr>
                 <tr class="table-subtitle-container">
-                    <th scope="col" class="table-subtitle">Events with the highest percentage of attendance</th>
-                    <th scope="col" class="table-subtitle">Events with the lowest percentage of attendance</th>
+                    <th scope="col" class="table-subtitle">Event with the highest percentage of attendance</th>
+                    <th scope="col" class="table-subtitle">Event with the lowest percentage of attendance</th>
                     <th scope="col" class="table-subtitle">Event with larger capacity</th>
                 </tr>
             </thead>
             <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+              <tr id="generalStatistics">
               </tr>
             </tbody>
 
@@ -79,7 +76,7 @@
                     <th scope="col" class="table-subtitle">Percentage of attendance</th>
                 </tr>
 
-            <tbody>
+            <tbody id="upcomingStatistics">
               <tr>
                 <td></td>
                 <td></td>
@@ -101,30 +98,10 @@
                     <th scope="col" class="table-subtitle">Percentage of attendance</th>
                 </tr>
 
-            <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
+            <tbody id="pastStatistics">
             </tbody>
         </table>
-
+ 
     </main>
     <footer class="d-flex flex-wrap justify-content-between align-items-center p-3 mt-3">
         <ul class="nav col-md-4 list-unstyled d-flex">
@@ -147,7 +124,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-    <script src="./scripts/data.js"></script>
+    <script src="./scripts/function.js"></script>
     <script src="./scripts/stats.js"></script>
 </body>
 

@@ -3,10 +3,7 @@ const DataUrl = 'https://mindhub-xj03.onrender.com/api/amazing'
 async function fetchData(url){
     let dataAsync = await fetch(url)
         .then(response=>response.json())
-        .then(datos =>{
-            
-            return datos
-        })
+        .then(datos =>{return datos})
         .catch(err=>{
             fetch('../scripts/amazing.json')
                 .then(response=>response.json())
@@ -16,6 +13,7 @@ async function fetchData(url){
                 .catch(err=>{alert('Intente más tarde')})
     })
     return dataAsync
+    console.log(dataAsync)
 }
 
 function printCard(data, DomElement){

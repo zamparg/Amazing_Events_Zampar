@@ -214,6 +214,12 @@ table{
 .card-container{
     min-height: 57vh;
 }
+
+td{
+    color: white;
+    text-align: center;
+}
+
 @media (max-width: 600px) {
 
     .card-container{
@@ -234,6 +240,14 @@ table{
     }
     
 @media (max-width: 390px) {
+    table{
+        table-layout:fixed;
+        font-size: smaller;
+        word-wrap: break-word
+    }
+    .table-subtitle{
+        padding: 0.1rem !important};
+    
         .tableOverflow{
             overflow-x: auto;
         }
