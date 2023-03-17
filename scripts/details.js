@@ -1,9 +1,7 @@
-
 const locationURL = document.location.search
 const param = new URLSearchParams(locationURL)
 let idParam = param.get("id")
 const detailsDom= document.getElementById("details")
-
 
 
 async function start(){

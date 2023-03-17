@@ -8,7 +8,7 @@ async function fetchData(url){
             return datos
         })
         .catch(err=>{
-            fetch('../assets/amazing.json')
+            fetch('../scripts/amazing.json')
                 .then(response=>response.json())
                 .then(datos =>{
                     

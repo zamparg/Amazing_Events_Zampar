@@ -11,7 +11,7 @@ let searchValue=""
 
 async function start(){
     let result = await fetchData(DataUrl)
-    dataUpcoming = result.events.filter(event => event.date >= data.currentDate)
+    dataUpcoming = result.events.filter(event => event.date >= result.currentDate)
     categoriesUpcoming = deleteDuplicate(dataUpcoming.map((event) => event.category)).sort();
     printCategories(categoriesNav, categoriesUpcoming)
     printCard(dataUpcoming, cardContainer)
