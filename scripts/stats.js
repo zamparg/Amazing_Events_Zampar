@@ -4,7 +4,6 @@ const DomUpcomingStatistics = document.getElementById('upcomingStatistics')
 
 async function start(){
     let data = await fetchData(DataUrl)
-
     mostrarStats(data)
 }
 
