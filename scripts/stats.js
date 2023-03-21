@@ -36,16 +36,19 @@ function mostrarStats(info){
   function objStatsGeneral(data){
     let arrayPercent= data.events.map(event => ({
         'name':event.name,
+        'finished': (event.date<data.currentDate?true:false),
         'percent': parseFloat(((event.assistance?event.assistance:event.estimate)*100/event.capacity).toFixed(2)),
         'capacity': event.capacity
     }))
     
+    let pastEvents = arrayPercent.filter(event=> event.finished)
+
     let statsGeneral ={
-        'highestPercent': arrayPercent.sort((b,a)=>a.percent-b.percent)[0],
-        'lowestPercent':arrayPercent.sort((a,b)=>a.percent-b.percent)[0],
+        'highestPercent': pastEvents.sort((b,a)=>a.percent-b.percent)[0],
+        'lowestPercent': pastEvents.sort((a,b)=>a.percent-b.percent)[0],
         'largerCapacity': arrayPercent.sort((b,a)=>a.capacity-b.capacity)[0]
     }
-
+    
     return statsGeneral
 }
 
@@ -83,6 +86,8 @@ function percents(array, category){
     return (percent/catArray.length).toFixed(2)
 }
 
+
+// pinta estadisticas
 function printStatistics(array, DomElement){
     DomElement.innerHTML = ''
     array.forEach((data)=>{
@@ -95,6 +100,7 @@ function printStatistics(array, DomElement){
     })
 }
 
+// pinta stats generales
 function printGeneral(obj,DomElement){
 
     DomElement.innerHTML = `
