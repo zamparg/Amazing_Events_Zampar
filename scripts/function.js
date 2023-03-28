@@ -47,7 +47,7 @@ function printCategories(DomElement, data){
     data.forEach((category) =>{
         DomElement.innerHTML+=`
         <li class="categoryItem">
-            <input class="form-check-input" type="checkbox" value="${category}" id="${category}">
+            <input class="form-check-input" role="switch" type="checkbox" value="${category}" id="${category}">
             <label class="form-check-label" for="${category}">${category}</label>
         </li>
         `

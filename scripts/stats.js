@@ -4,30 +4,22 @@ const DomUpcomingStatistics = document.getElementById('upcomingStatistics')
 
 async function start(){
     let data = await fetchData(DataUrl)
-    mostrarStats(data)
+    showStats(data)
 }
 
 start()
 
-
-function mostrarStats(info){
+function showStats(info){
     let statsGeneral = objStatsGeneral(info)
     let dataPast = addData(info.events.filter(event => event.date < info.currentDate))
     let dataUpcoming = addData(info.events.filter(event => event.date > info.currentDate)) 
     let statisticsPast = statisticsByCategory(dataPast)
     let statisticsUpcoming = statisticsByCategory(dataUpcoming)
 
-
     printStatistics(statisticsPast, DomPastStatistics)
     printStatistics(statisticsUpcoming,DomUpcomingStatistics)
     printGeneral(statsGeneral,DomGeneralStatistics)
-
 }
-
-
-
-
-
 
 
 //FUNCIONES
