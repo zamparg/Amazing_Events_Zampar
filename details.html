@@ -13,6 +13,9 @@
 </head>
 
 <body class="d-flex flex-column justify-content-between">
+    <div id="app">
+
+    
     <header>
         <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid">
@@ -41,6 +44,10 @@
                         <li class="nav-item ">
                             <a class="nav-link btn p-1" href="./stats.html">Stats</a>
                         </li>
+                        <li v-if="tienda.length" class="nav-item ">
+                            <a class="nav-link btn cart-icon" href="./shop.html"><i class="bi-cart2"></i><span class="cart-quantity">{{tienda.length}}</span></a>
+                            
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -49,9 +56,35 @@
             <h1 class="title">Details</h1>
         </div>
     </header>
+
     <main class="d-flex main-events justify-content-center">
         <div class="card m-3" id="details">
-           
+           <div class="row g-0">
+        <div class="col-md-5 text-center p-2">
+            <img :src="eventosAMostrar.image" class="img-fluid rounded-start detail-img " alt="${{eventosAMostrar.name}}">
+        </div>
+        <div class="col-md-7">
+            <div class="card-body">
+                <h5 class="card-title text-center">{{eventosAMostrar.name}}</h5>
+                <div class="text-center m-1">
+                    <small > 📍 {{eventosAMostrar.place}} </small> - 
+                    <small > 📆 {{eventosAMostrar.date}} </small>
+                    <p class="card-text text-center mx-2 my-4"><i> {{eventosAMostrar.description}}</i></p>
+                </div>
+                <div class="text-center">
+                    
+                        <small class="card-text"><i>{{eventosAMostrar.assistance?"Assistance: " :"Estimate: "}} {{eventosAMostrar.assistance? eventosAMostrar.assistance : eventosAMostrar.estimate}} people</i></small><br>
+                        <small >  Capacity: <i>{{eventosAMostrar.capacity}} people </i></small><br>
+                        <small> Category: <i>{{eventosAMostrar.category}} </i></small>  
+                    
+                </div>          
+                <div class="d-flex justify-content-center align-items-center my-4 flex-column">
+                    <small class="mb-1"> Price: <i>US$ {{eventosAMostrar.price}}</i> </small>
+                    <button class="btn  details-btn p-1 mt-1" type="submit" @click="agregarShop(eventosAMostrar)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
         </div>
 
     </main>
@@ -71,12 +104,12 @@
             </a>
         </div>
     </footer>
-
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-    <script src="./scripts/function.js"></script>
-    <script src="./scripts/details.js"></script>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="./scripts/vue.js"></script>
 </body>
 
 </html>

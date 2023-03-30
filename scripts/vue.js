@@ -11,13 +11,16 @@ const app = createApp({
             categorias: [],
             categoriasSeleccionadas: [],
             tienda: [],
+            precioTotal:0,
 		}
-	},	
-//funciones que se inicializan al principio. "created" en Vue.js se refiere a un ciclo de vida del componente que se ejecuta una vez que el componente ha sido creado, pero antes de que se haya montado en el DOM. Es similar al "constructor" de una clase en programación orientada a objetos. 
+	},
+
 created(){
 	this.pedirDatos()
-    this.tienda = JSON.parse(localStorage.getItem('shop')) || []
+    this.tienda = JSON.parse(localStorage.getItem('cart')) || []
+    console.log(JSON.parse(JSON.stringify(this.tienda)))
 },
+
 mounted(){},
 // funciones
 methods:{
@@ -31,10 +34,22 @@ methods:{
         
         .then(data =>{
                 this.fecha = data.currentDate
-                this.eventos = data.events
-                this.eventosAMostrar = this.eventos
-                this.extraerCategorias(data.events)
-  
+                if(document.getElementById("past")){
+                    this.eventos = data.events.filter(event => event.date < this.fecha)
+                    this.eventosAMostrar = this.eventos
+                }else if(document.getElementById("upcoming")){
+                    this.eventos = data.events.filter(event => event.date >= this.fecha)
+                    this.eventosAMostrar = this.eventos
+                }else if(document.getElementById("details")){
+                    const locationURL = document.location.search
+                    const param = new URLSearchParams(locationURL)
+                    let idParam = param.get("id")
+                    this.eventosAMostrar =data.events.find(event => event._id == idParam)
+                }else{
+                    this.eventos = data.events
+                    this.eventosAMostrar = this.eventos
+                }
+                this.extraerCategorias(this.eventos)
             })
     },
     extraerCategorias(array){
@@ -47,12 +62,15 @@ methods:{
     agregarShop(evento){
         if(!this.tienda.includes(evento)){
             this.tienda.push(evento)
-            localStorage.setItem('favs',JSON.stringify(this.tienda))
+            localStorage.setItem('cart',JSON.stringify(this.tienda))
+            this.precioTotal = this.tienda.reduce(acc, item => {return acc + item.price},0)
         }
     },
     eliminarShop(evento){
+        console.log(this.tienda)
         this.tienda = this.tienda.filter(eventoF => eventoF.name != evento.name)
-        localStorage.setItem('favs',JSON.stringify(this.tienda))
+        localStorage.setItem('cart',JSON.stringify(this.tienda))
+        this.precioTotal = this.tienda.reduce(acc, item => {return acc + item.price},0)
     }
 },
 computed:{

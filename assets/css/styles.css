@@ -34,7 +34,15 @@ nav, header{
 .navbar-toggler-icon{
     color: white ;
 }
-
+.cart-icon{
+    background-color: #4409538f;
+}
+.cart-quantity{
+    margin-left: 0.2rem;
+    padding:0.2rem;
+    background-color: #4409538f;
+    border-radius: 25px;
+}
 /*MAIN*/ 
 
 /* Navbar*/
@@ -66,7 +74,16 @@ nav, header{
     border: none;
     text-transform: uppercase;
 }
-
+.shop-btn{
+    background-color: transparent;
+    color: white;
+    border: none;
+    margin: 0;
+    padding: 0 0.25rem;
+}
+.shop-btn:active{
+    border: none;
+}
 .details-btn:hover, .details-btn:active {
     background-color: #e0046b70;
     border: none;
@@ -189,6 +206,16 @@ table{
     height: 100%;
     object-fit: cover;
 }
+
+/*SHOP*/
+.img-shop{
+    height: 100px;
+}
+
+
+
+
+
 /*Media Query*/
 @media (max-width: 991px) {
     

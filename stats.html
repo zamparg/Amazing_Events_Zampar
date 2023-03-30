@@ -41,6 +41,10 @@
                         <li class="nav-item ">
                             <a class="nav-link btn btn-navbar active" href="#">Stats</a>
                         </li>
+                        <li v-if="tienda.length" class="nav-item ">
+                            <a class="nav-link btn cart-icon" href="./shop.html"><i class="bi-cart2"></i><span class="cart-quantity">{{tienda.length}}</span></a>
+                            
+                        </li>
                     </ul>
                 </div>
             </div>

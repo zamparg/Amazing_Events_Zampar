@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Past Events</title>
+    <title>Past Events  | Amazing Events</title>
     <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
@@ -13,6 +13,7 @@
 </head>
 
 <body class="d-flex flex-column justify-content-between">
+    <div id="app">
     <header>
         <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid">
@@ -41,6 +42,10 @@
                         <li class="nav-item ">
                             <a class="nav-link btn" href="./stats.html">Stats</a>
                         </li>
+                        <li v-if="tienda.length" class="nav-item ">
+                            <a class="nav-link btn cart-icon" href="./shop.html"><i class="bi-cart2"></i><span class="cart-quantity">{{tienda.length}}</span></a>
+                            
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -49,24 +54,42 @@
             <h1 class="title">Past Events</h1>
         </div>
     </header>
-    <main class="d-flex main-events">
-        <aside class="container-fluid list-group aside-categories">
-            <div class="d-flex justify-content-between m-lg-2 categories-list">
-                <ul class="d-flex p-0 align-items-center gap-3" id="categoriesPast">
-
+    <main class="d-flex main-events" id="past">
+        <aside class="container-fluid list-group aside-categories" >
+            <div class="d-flex justify-content-between m-lg-2  categories-list">
+                <ul class="d-flex p-0 align-items-center gap-3 text-white">
+                    <div v-for="categoria of categorias" class="form-check form-switch">
+                        <input v-model="categoriasSeleccionadas" class="form-check-input" type="checkbox" role="switch" :id="categoria" :value="categoria">
+                        <label class="form-check-label" :for="categoria">{{categoria}}</label>
+                    </div>
                 </ul>
                 <form class="d-flex search-box" role="search">
-                    <input class="form-control me-2 search-input" type="search" placeholder="Search"
+                    <input v-model="textoFilter" class="form-control me-2 search-input" type="search" placeholder="Search"
                         aria-label="Search">
-                        <button class="btn  p-0" type="submit">
-                            <i class="bi bi-search p-1"></i>
-                        </button>
+                    {{superFiltro}}
                 </form>
 
             </div>
         </aside>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 m-1 card-container" id="cardsPast">
-
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 m-1 card-container">
+            <h2 v-if="!eventosAMostrar.length" class="text-center ">No Results</h2>
+            <div v-for="evento of eventosAMostrar"class="col">
+                <div class="card h-100">
+                    <img :src="evento.image" class="card-img-top p-2" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{evento.name}}</h5>
+                        <p class="card-text">{{evento.description}}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-around align-items-center">
+                        <small> US$ {{evento.price}} </small>
+                        <a :href="'./details.html?id='+evento._id" class="btn details-btn p-1">
+                            View more
+                        </a>
+                        <a v-if="!tienda.includes(evento)" class="btn shop-btn " @click="agregarShop(evento)" ><i class="bi bi-plus-circle-fill"></i></a>
+                        <a v-if="tienda.includes(evento)" class="btn shop-btn " @click="eliminarShop(evento)"><i class="bi bi-dash-circle-fill"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </main>
@@ -86,11 +109,11 @@
             </a>
         </div>
     </footer>
-    <script src="./scripts/function.js"></script>
-    <script src="./scripts/past-events.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./scripts/vue.js"></script>
+
 </body>
 
 </html>

@@ -10,7 +10,7 @@ async function fetchData(url){
     .then(datos =>{
                     
         return datos})
-    .catch(err=>{alert('Intente más tarde')})
+    .catch(err=>{alert('Try later!')})
     return dataAsync
     console.log(dataAsync)
 }
