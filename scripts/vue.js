@@ -17,11 +17,16 @@ const app = createApp({
 
 created(){
 	this.pedirDatos()
-    this.tienda = JSON.parse(localStorage.getItem('cart')) || []
-    console.log(JSON.parse(JSON.stringify(this.tienda)))
+    
 },
 
-mounted(){},
+mounted(){
+    console.log(this.tienda)
+    this.tienda = JSON.parse(localStorage.getItem('cart')) || []
+    console.log(this.tienda)
+    this.precioTotal = this.tienda.reduce((acc, item) => {return acc + item.price},0)
+
+},
 // funciones
 methods:{
 	pedirDatos(){
@@ -31,7 +36,6 @@ methods:{
                 return fetch('../scripts/amazing.json')
                     .then(response=>response.json())
             })
-        
         .then(data =>{
                 this.fecha = data.currentDate
                 if(document.getElementById("past")){
@@ -60,17 +64,24 @@ methods:{
         })
     },
     agregarShop(evento){
-        if(!this.tienda.includes(evento)){
+        if(!this.tienda.find(eventoF => {eventoF._id == evento._id})){
+            console.log(this.tienda.find(eventoF => {eventoF._id == evento._id}))
             this.tienda.push(evento)
+            console.log(this.tienda)
             localStorage.setItem('cart',JSON.stringify(this.tienda))
-            this.precioTotal = this.tienda.reduce(acc, item => {return acc + item.price},0)
+            this.precioTotal = this.tienda.reduce((acc, item) => {return acc + item.price},0)
         }
     },
     eliminarShop(evento){
         console.log(this.tienda)
         this.tienda = this.tienda.filter(eventoF => eventoF.name != evento.name)
         localStorage.setItem('cart',JSON.stringify(this.tienda))
-        this.precioTotal = this.tienda.reduce(acc, item => {return acc + item.price},0)
+        this.precioTotal = this.tienda.reduce((acc, item )=> {return acc + item.price},0)
+    },
+
+    resetShop(){
+        this.tienda = []
+        localStorage.clear()
     }
 },
 computed:{

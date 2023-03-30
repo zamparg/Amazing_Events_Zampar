@@ -15,12 +15,15 @@ body{
     min-height: 100vh;
     background-attachment: fixed;
 }
+#app{
+    min-height: 100vh;
+}
 h2{
     color:white
 }
 
 /* HEADER*/
-nav, header{
+nav{
     background-color: #30073a8f;
 }
 .navbar-toggler{
@@ -44,7 +47,10 @@ nav, header{
     border-radius: 25px;
 }
 /*MAIN*/ 
-
+.finished {
+    background-color: #e0046b70;
+    border-radius: 25px;
+}
 /* Navbar*/
 .logo{
     width: 70px;
@@ -213,15 +219,30 @@ table{
 }
 
 
+td{
+    color: white;
+    text-align: center;
+}
+.oops{
+    max-width:50% ;
+}
 
-
-
+.main-events{
+    min-height: fit-content;
+}
 /*Media Query*/
 @media (max-width: 991px) {
     
+    .aside-categories{
+        max-width: 360px;
+    }
+    .oops{
+        max-width:75% ;
+    }
     .categories-list{
         flex-direction: column;
         flex-wrap: nowrap;
+        
     }
     .categories-list ul{
         flex-direction: column;
@@ -239,6 +260,7 @@ table{
     }
     .main-events{
         flex-direction: row;
+        
     }
     .search-box{
         flex-direction: column;
@@ -246,17 +268,12 @@ table{
     }
 }
 
-.card-container{
-    min-height: 57vh;
-}
-
-td{
-    color: white;
-    text-align: center;
-}
 
 @media (max-width: 600px) {
 
+    .aside-categories{
+        max-width: none;
+    }
     .card-container{
         min-height: 20vh;
     }

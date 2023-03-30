@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
-<body class="d-flex flex-column justify-content-between">
-    <div id="app">
+<body >
+    <div id="app" class="d-flex flex-column justify-content-between">
     <header>
         <nav class="navbar navbar-expand-lg ">
             <div class="container-fluid">
@@ -54,7 +54,7 @@
             <h1 class="title">Upcoming Events</h1>
         </div>
     </header>
-    <main class="d-flex main-events" id="upcoming">
+    <main class="d-flex main-events flex-grow-1" id="upcoming">
         <aside class="container-fluid list-group aside-categories" >
             <div class="d-flex justify-content-between m-lg-2  categories-list">
                 <ul class="d-flex p-0 align-items-center gap-3 text-white">
@@ -71,21 +71,25 @@
 
             </div>
         </aside>
+        <div v-if="!eventosAMostrar.length" class="text-center ">
+            <img src="./assets/img/resultNotFound.png" alt="oops" class="oops">
+        </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 m-1 card-container">
-            <h2 v-if="!eventosAMostrar.length" class="text-center ">No Results</h2>
             <div v-for="evento of eventosAMostrar"class="col">
                 <div class="card h-100">
                     <img :src="evento.image" class="card-img-top p-2" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{evento.name}}</h5>
                         <p class="card-text">{{evento.description}}</p>
+                        <p v-if="evento.date<fecha" class="text-center finished m-0">Finished event </p>
+
                     </div>
                     <div class="card-footer d-flex justify-content-around align-items-center">
                         <small> US$ {{evento.price}} </small>
                         <a :href="'./details.html?id='+evento._id" class="btn details-btn p-1">
                             View more
                         </a>
-                        <a v-if="!tienda.includes(evento)" class="btn shop-btn " @click="agregarShop(evento)" ><i class="bi bi-plus-circle-fill"></i></a>
+                        <a v-if="!tienda.includes(evento) && evento.date>=fecha" class="btn shop-btn " @click="agregarShop(evento)" ><i class="bi bi-plus-circle-fill"></i></a>
                         <a v-if="tienda.includes(evento)" class="btn shop-btn " @click="eliminarShop(evento)"><i class="bi bi-dash-circle-fill"></i></a>
                     </div>
                 </div>

@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 
-<body class="d-flex flex-column justify-content-between">
-    <div id="app">
+<body >
+    <div id="app" class="d-flex flex-column justify-content-between">
 
     
     <header>
@@ -80,7 +80,10 @@
                 </div>          
                 <div class="d-flex justify-content-center align-items-center my-4 flex-column">
                     <small class="mb-1"> Price: <i>US$ {{eventosAMostrar.price}}</i> </small>
-                    <button class="btn  details-btn p-1 mt-1" type="submit" @click="agregarShop(eventosAMostrar)">Add to Cart</button>
+                    <button v-if="!tienda.includes(eventosAMostrar)" class="btn  details-btn p-1 mt-1" type="submit" @click="agregarShop(eventosAMostrar)">Add to Cart</button>
+                    
+                    <button v-if="tienda.includes(eventosAMostrar)"  class="btn  details-btn p-1 mt-1" @click="eliminarShop(eventosAMostrar)">Delete</button>
+                    <a v-if="tienda.includes(eventosAMostrar)" class="btn  details-btn p-1 mt-1" href="./shop.html">View Cart</a>
                 </div>
             </div>
         </div>

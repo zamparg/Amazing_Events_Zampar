@@ -17,7 +17,7 @@ async function fetchData(url){
 
 function printCard(data, DomElement){
     if(data.length == 0){
-        DomElement.innerHTML=`<h2 class="text-center ">No Results</h2>`
+        DomElement.innerHTML=`<h2 class="text-center ">NO EVENTS FOUND</h2>`
         return
     }
     DomElement.innerHTML=``
