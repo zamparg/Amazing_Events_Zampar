@@ -93,9 +93,9 @@
                             <a :href="'./details.html?id='+evento._id" class="btn details-btn p-1">
                                 View more
                             </a>
-                            <a v-if="!tienda.includes(evento) && evento.date>=fecha" class="btn shop-btn "
+                            <a v-if="!tienda.find(eventoF => eventoF._id == evento._id) && evento.date>=fecha" class="btn shop-btn "
                                 @click="agregarShop(evento)"><i class="bi bi-plus-circle-fill"></i></a>
-                            <a v-if="tienda.includes(evento)" class="btn shop-btn " @click="eliminarShop(evento)"><i
+                            <a v-if="tienda.find(eventoF => eventoF._id == evento._id)" class="btn shop-btn " @click="eliminarShop(evento)"><i
                                     class="bi bi-dash-circle-fill"></i></a>
 
                         </div>

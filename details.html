@@ -68,7 +68,8 @@
                 <h5 class="card-title text-center">{{eventosAMostrar.name}}</h5>
                 <div class="text-center m-1">
                     <small > 📍 {{eventosAMostrar.place}} </small> - 
-                    <small > 📆 {{eventosAMostrar.date}} </small>
+                    <small v-if="eventosAMostrar.date<fecha" class="text-center finished px-3">Finished event </small>
+                    <small v-if="eventosAMostrar.date>=fecha"> 📆 {{eventosAMostrar.date}} </small>
                     <p class="card-text text-center mx-2 my-4"><i> {{eventosAMostrar.description}}</i></p>
                 </div>
                 <div class="text-center">
@@ -79,11 +80,17 @@
                     
                 </div>          
                 <div class="d-flex justify-content-center align-items-center my-4 flex-column">
+
                     <small class="mb-1"> Price: <i>US$ {{eventosAMostrar.price}}</i> </small>
-                    <button v-if="!tienda.includes(eventosAMostrar)" class="btn  details-btn p-1 mt-1" type="submit" @click="agregarShop(eventosAMostrar)">Add to Cart</button>
+                    
+                    
+
+                    <a v-if="eventosAMostrar.date<fecha" class="btn  details-btn p-1 mt-1" href="./index.html">Go to the Shop</a>
+
+                    <button v-if="!tienda.find(eventoF => eventoF._id == eventosAMostrar._id) && eventosAMostrar.date>=fecha" class="btn  details-btn p-1 mt-1" type="submit" @click="agregarShop(eventosAMostrar)">Add to Cart</button>
                     
                     <button v-if="tienda.includes(eventosAMostrar)"  class="btn  details-btn p-1 mt-1" @click="eliminarShop(eventosAMostrar)">Delete</button>
-                    <a v-if="tienda.includes(eventosAMostrar)" class="btn  details-btn p-1 mt-1" href="./shop.html">View Cart</a>
+                    <a v-if="tienda.find(eventoF => eventoF._id == eventosAMostrar._id)" class="btn  details-btn p-1 mt-1" href="./shop.html">View Cart</a>
                 </div>
             </div>
         </div>

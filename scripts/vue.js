@@ -1,5 +1,6 @@
 const { createApp} = Vue
 
+
 const app = createApp({
 	data(){
 		return{
@@ -17,15 +18,12 @@ const app = createApp({
 
 created(){
 	this.pedirDatos()
-    
+    this.tienda = JSON.parse(localStorage.getItem('cart')) || []
+    console.log(this.tienda)
 },
 
 mounted(){
-    console.log(this.tienda)
-    this.tienda = JSON.parse(localStorage.getItem('cart')) || []
-    console.log(this.tienda)
-    this.precioTotal = this.tienda.reduce((acc, item) => {return acc + item.price},0)
-
+        this.precioTotal = this.tienda.reduce((acc, item) => {return acc + item.price},0)
 },
 // funciones
 methods:{
@@ -64,13 +62,25 @@ methods:{
         })
     },
     agregarShop(evento){
-        if(!this.tienda.find(eventoF => {eventoF._id == evento._id})){
-            console.log(this.tienda.find(eventoF => {eventoF._id == evento._id}))
+        if( this.tienda){
             this.tienda.push(evento)
-            console.log(this.tienda)
-            localStorage.setItem('cart',JSON.stringify(this.tienda))
-            this.precioTotal = this.tienda.reduce((acc, item) => {return acc + item.price},0)
+                localStorage.setItem('cart',JSON.stringify(this.tienda))
+                this.precioTotal = this.tienda.reduce((acc, item) => {return acc + item.price},0)
+                console.log(this.tienda)
+        }else{
+            let tiendaParse = JSON.parse(this.tienda)
+            let check = tiendaParse.find(eventoF => eventoF._id == evento._id)
+            console.log(check)
+            
+            if(!check){
+                this.tienda.push(evento)
+                localStorage.setItem('cart',JSON.stringify(this.tienda))
+                this.precioTotal = this.tienda.reduce((acc, item) => {return acc + item.price},0)
+                console.log(this.tienda)
+            }
         }
+       
+    
     },
     eliminarShop(evento){
         console.log(this.tienda)
@@ -99,5 +109,15 @@ computed:{
 
 }).mount('#app')
 
-// en HTML, podemos usar v-for o v-if
-// directiva para atributos :src="persona.img || sino tiene, url"
+
+//SUGERENCIA DE ROBERT
+// agregarShop(evento) {
+//     const eventoExistente = this.tienda.find(item => item._id === evento._id);
+//     if (!eventoExistente) {
+//       this.tienda.push(evento);
+//       localStorage.setItem('cart', JSON.stringify(this.tienda));
+//       this.precioTotal = this.tienda.reduce((acc, item) => acc + item.price, 0);
+//       console.log(this.tienda);
+//     }
+//   }
+  
