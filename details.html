@@ -89,8 +89,9 @@
 
                     <button v-if="!tienda.find(eventoF => eventoF._id == eventosAMostrar._id) && eventosAMostrar.date>=fecha" class="btn  details-btn p-1 mt-1" type="submit" @click="agregarShop(eventosAMostrar)">Add to Cart</button>
                     
-                    <button v-if="tienda.includes(eventosAMostrar)"  class="btn  details-btn p-1 mt-1" @click="eliminarShop(eventosAMostrar)">Delete</button>
-                    <a v-if="tienda.find(eventoF => eventoF._id == eventosAMostrar._id)" class="btn  details-btn p-1 mt-1" href="./shop.html">View Cart</a>
+                    <button v-if="tienda.find(eventoF => eventoF._id == eventosAMostrar._id)"  class="btn  details-btn p-1 mt-1" @click="eliminarShop(eventosAMostrar)">Delete</button>
+
+                    <a v-if="tienda.find(eventoF => eventoF._id == eventosAMostrar._id) || tienda.length" class="btn  details-btn p-1 mt-1" href="./shop.html">View Cart</a>
                 </div>
             </div>
         </div>
